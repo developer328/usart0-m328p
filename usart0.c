@@ -42,7 +42,6 @@
 
 volatile char _RECEIVED_CHAR_ = '\0';
 
-
 /*******************************************************************************/
 
 void usart_init(uint32_t baud){
@@ -108,19 +107,12 @@ char usart_getChar(void){
 
 	return UDR0;
 #elif ISR_EN == 1
-	uint8_t tmp = _RECEIVED_CHAR_;
+	char tmp = _RECEIVED_CHAR_;
 
 	_RECEIVED_CHAR_ = '\0';
-	
+
 	return tmp;
 #endif	
-}
-
-/******************************************************************************/
-
-char* usart_getStr(void){
-	//Unfinished yet.
-	return 0;
 }
 
 /******************************************************************************/
@@ -141,4 +133,3 @@ void usart_end(void){
 	sei();
 }
 
-/*************************************************************************/

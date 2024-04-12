@@ -19,7 +19,7 @@ ELF = $(SRC:.c=.elf)
 main.hex: main.elf
 	$(OBJCPY) -O ihex $< $@
 
-main.elf: $(SRC)
+main.elf: $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $?
 
 upload: main.hex
